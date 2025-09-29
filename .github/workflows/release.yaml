@@ -1,12 +1,16 @@
 name: Release
+
 on:
   push:
     branches:
       - main
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
- 
+    - cron: "0 22 * * *"
+
+permissions:
+  contents: write   # ✅ 必须有，不然 GITHUB_TOKEN 没法推送
+
 jobs:
   build:
     name: Build
@@ -35,7 +39,7 @@ jobs:
       
       - name: Release rule sets
         if: steps.build.outputs.skip != 'true'
-        run: .github/release-rule-set.sh
+        run: ./release-rule-set.sh   # ✅ 你的脚本在仓库根目录
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
