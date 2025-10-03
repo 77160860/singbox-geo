@@ -1,0 +1,14 @@
+{
+    "rules": [
+        {
+            "domain": [
+                "grok.com",
+                "x.ai"
+            ],
+            "domain_suffix": [
+                ".grok.com",
+                ".x.ai"
+            ]
+        }
+    ]
+}
